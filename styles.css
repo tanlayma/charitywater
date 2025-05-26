@@ -84,23 +84,22 @@ nav {
 
 /* Logo Styles */
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--eastern-blue);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--eastern-blue);
 }
 
 .jug-logo {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-    transition: transform 0.3s ease;
+  width: 30px; /* Adjust to match your logo's proportions */
+  height: auto; /* Maintains aspect ratio */
+  transition: transform 0.3s ease;
 }
 
 .logo:hover .jug-logo {
-    transform: rotate(15deg);
+  transform: rotate(15deg);
 }
 
 /* Hero Section */
