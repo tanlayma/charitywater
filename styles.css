@@ -283,3 +283,30 @@ footer {
         padding: calc(var(--space-lg) + 60px) var(--space-sm) var(--space-lg);
     }
 }
+
+/* ===== RAIN EFFECT ===== */
+#rain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.8);
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.raindrop {
+  position: absolute;
+  width: 2px;
+  height: 15px;
+  background: linear-gradient(to bottom, transparent, var(--eastern-blue));
+  animation: falling 1s linear infinite;
+  z-index: 10001;
+}
+
+@keyframes falling {
+  to { transform: translateY(100vh); }
+}
