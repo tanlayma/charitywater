@@ -79,8 +79,8 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Set water droplet cursor
-        document.body.style.cursor = "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"30\" viewBox=\"0 0 24 30\"><path fill=\"%23159AAF\" d=\"M12 3L6 15h12l-6-12zm0 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8z\"/></svg>'), auto";
+      // Improved raindrop cursor (simpler SVG)
+document.body.style.cursor = "url('data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='30' viewBox='0 0 24 30'><path fill='%23159AAF' d='M12 1L4 16h16L12 1zm0 8a3 3 0 1 1 0 6 3 3 0 0 1 0-6z'/></svg>'), auto";
 
         const overlay = document.getElementById('rain-overlay');
         let rainCooldown = false;
