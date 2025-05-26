@@ -284,41 +284,39 @@ footer {
     }
 }
 
-/* ===== RAIN EFFECT ===== */
+/* ===== IMPROVED RAIN EFFECT ===== */
 #rain-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    z-index: 10000;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.8s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent; /* Removed white overlay */
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
 
 .raindrop {
-    position: absolute;
-    width: 2px;
-    height: 20px;
-    background: linear-gradient(to bottom, 
-        transparent, 
-        var(--eastern-blue) 60%);
-    animation: falling 1s linear forwards;
-    z-index: 10001;
+  position: absolute;
+  width: 2px;
+  height: 25px;
+  background: linear-gradient(to bottom, 
+    transparent, 
+    var(--eastern-blue) 70%);
+  animation: falling 1.2s linear forwards;
+  z-index: 10001;
+  filter: drop-shadow(0 0 2px rgba(21, 154, 175, 0.7)); /* Adds glow */
 }
 
 @keyframes falling {
-    0% {
-        transform: translateY(-20px);
-        opacity: 1;
-    }
-    90% {
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(100vh);
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(-30px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
 }
