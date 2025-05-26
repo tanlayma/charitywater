@@ -74,45 +74,51 @@
         <p>&copy; 2025 charity:water. All rights reserved.</p>
     </footer>
 
-    <!-- Add this right before the closing </body> tag -->
-<div id="rain-overlay"></div>
+    <!-- Rain Effect Elements -->
+    <div id="rain-overlay"></div>
 
-/* ===== RAIN EFFECT ===== */
-/* ... (previous CSS) ... */
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set water droplet cursor
+        document.body.style.cursor = "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"30\" viewBox=\"0 0 24 30\"><path fill=\"%23159AAF\" d=\"M12 3L6 15h12l-6-12zm0 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8z\"/></svg>'), auto";
 
-/* Add this after the CSS */
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  let rainCooldown = false;
-  document.body.style.cursor = "url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'30\' viewBox=\'0 0 24 30\'><path fill=\'%23159AAF\' d=\'M12 3L6 15h12l-6-12zm0 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8z\'/></svg>'), auto";
+        const overlay = document.getElementById('rain-overlay');
+        let rainCooldown = false;
 
-  function createRain() {
-    if (rainCooldown) return;
-    const overlay = document.getElementById('rain-overlay');
-    overlay.style.opacity = '1';
+        function createRain() {
+            if (rainCooldown) return;
+            
+            // Activate overlay
+            overlay.style.opacity = '1';
+            overlay.innerHTML = '';
 
-    for (let i = 0; i < 100; i++) {
-      const drop = document.createElement('div');
-      drop.className = 'raindrop';
-      drop.style.left = `${Math.random() * 100}vw`;
-      drop.style.animationDuration = `${0.5 + Math.random() * 1}s`;
-      overlay.appendChild(drop);
-    }
+            // Create raindrops
+            for (let i = 0; i < 80; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'raindrop';
+                drop.style.left = `${Math.random() * 100}vw`;
+                drop.style.top = `-30px`;
+                drop.style.animationDuration = `${0.3 + Math.random() * 0.7}s`;
+                drop.style.animationDelay = `${Math.random() * 0.5}s`;
+                overlay.appendChild(drop);
+            }
 
-    setTimeout(() => {
-      overlay.style.opacity = '0';
-      setTimeout(() => overlay.innerHTML = '', 1000);
-    }, 3000);
+            // Deactivate after 3 seconds
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+                setTimeout(() => overlay.innerHTML = '', 1000);
+            }, 3000);
 
-    rainCooldown = true;
-    setTimeout(() => rainCooldown = false, 30000);
-  }
+            // 30-second cooldown
+            rainCooldown = true;
+            setTimeout(() => rainCooldown = false, 30000);
+        }
 
-  document.querySelectorAll('.cta-button, .nav-links a[href="#support"]').forEach(btn => {
-    btn.addEventListener('mouseenter', createRain);
-  });
-});
-</script>
-    
+        // Apply to both buttons
+        document.querySelectorAll('.cta-button, .nav-links li:nth-child(3) a').forEach(btn => {
+            btn.addEventListener('mouseenter', createRain);
+        });
+    });
+    </script>
 </body>
 </html>
