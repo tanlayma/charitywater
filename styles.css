@@ -310,3 +310,40 @@ footer {
 @keyframes falling {
   to { transform: translateY(100vh); }
 }
+
+/* ===== RAIN EFFECT ===== */
+/* ... (previous CSS) ... */
+
+/* Add this after the CSS */
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let rainCooldown = false;
+  document.body.style.cursor = "url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'30\' viewBox=\'0 0 24 30\'><path fill=\'%23159AAF\' d=\'M12 3L6 15h12l-6-12zm0 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8z\'/></svg>'), auto";
+
+  function createRain() {
+    if (rainCooldown) return;
+    const overlay = document.getElementById('rain-overlay');
+    overlay.style.opacity = '1';
+
+    for (let i = 0; i < 100; i++) {
+      const drop = document.createElement('div');
+      drop.className = 'raindrop';
+      drop.style.left = `${Math.random() * 100}vw`;
+      drop.style.animationDuration = `${0.5 + Math.random() * 1}s`;
+      overlay.appendChild(drop);
+    }
+
+    setTimeout(() => {
+      overlay.style.opacity = '0';
+      setTimeout(() => overlay.innerHTML = '', 1000);
+    }, 3000);
+
+    rainCooldown = true;
+    setTimeout(() => rainCooldown = false, 30000);
+  }
+
+  document.querySelectorAll('.cta-button, .nav-links a[href="#support"]').forEach(btn => {
+    btn.addEventListener('mouseenter', createRain);
+  });
+});
+</script>
